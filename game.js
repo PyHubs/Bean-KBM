@@ -26,6 +26,7 @@ loadSprite("chicken", "sprites/chicken.png");
 loadSprite("new_bean", "sprites/bean.png");
 loadSprite("clown", "sprites/clown.png");
 loadSprite("kokofruit", "sprites/kokonut.png");
+loadSprite("eman", "sprites/eman.png");
 
 let score = 0;
 let level = 1;
@@ -152,7 +153,7 @@ scene("game", () => {
 
   // putting together our player character
   const bean = add([
-    sprite("new_bean"), // render the bean sprite in loadSprite()
+    sprite(random_item(["new_bean", "eman"])), // render the bean sprite in loadSprite()
     pos(80, 40), // sets position
     area(), // adds a colider area
     body(), // enable gravity
@@ -301,7 +302,6 @@ scene("game", () => {
         "eeeeeeeeeeeeee",
         "When da impostor is sus",
         "Your grandma is better",
-        "Your grandparents had to walk uphill and downhill sideways, on one leg to school. The other leg was starting a buisness",
         "Go to blancstore.imibuks.repl.co/#virus to download my virus :)",
         "Your cousin is better",
         "You got a B IN MATHS???",
@@ -378,7 +378,8 @@ scene("menu", () => {
 
   onClick("restart_btn", () => {
     show_score = true
-    fake_hits = 9000
+    fake_hits = 900
+    level=0
     go("game")
   })
 

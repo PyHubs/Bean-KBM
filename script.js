@@ -2698,6 +2698,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   loadSprite("new_bean", "sprites/bean.png");
   loadSprite("clown", "sprites/clown.png");
   loadSprite("kokofruit", "sprites/kokonut.png");
+  loadSprite("eman", "sprites/eman.png");
   var score = 0;
   var level = 1;
   var fake_hits = 900;
@@ -2788,7 +2789,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       }
     });
     const bean = add([
-      sprite("new_bean"),
+      sprite(random_item(["new_bean", "eman"])),
       pos(80, 40),
       area(),
       body(),
@@ -2975,7 +2976,8 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     ]);
     onClick("restart_btn", () => {
       show_score = true;
-      fake_hits = 9e3;
+      fake_hits = 900;
+      level = 0;
       go("game");
     });
   });
